@@ -25,9 +25,21 @@ public class CategoriesDaoTest {
 		Categories category1 = new Categories();
 		category1.setCategoryName("category1");
 		
+		List<Products> listaProductosMerge = new ArrayList<Products>();
+		Products product = new Products();
+		product.setProductName("Productmerge");
+		listaProductosMerge.add(product);		
+		category1.setProducts(listaProductosMerge);
+		
 		Categories category2 = new Categories();
 		category2.setCategoryName("category2");
 
+		List<Products> listaProductosdelete = new ArrayList<Products>();
+		Products product2 = new Products();
+		product2.setProductName("ProductDeleted");
+		listaProductosdelete.add(product2);		
+		category2.setProducts(listaProductosdelete);
+		
 		
 		CategoriesDao categoryDaoBeforeClass = new CategoriesDao();
 		

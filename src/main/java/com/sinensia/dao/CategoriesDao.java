@@ -123,6 +123,9 @@ public class CategoriesDao {
 			Session sessionObj = sessionFactory.getCurrentSession();
 			tx = sessionObj.beginTransaction();
 			Categories instance = (Categories) sessionObj.get("com.sinensia.model.Categories", id);
+			for(Products product: instance.getProducts()) {
+				sessionObj.delete(product);
+			}
 			sessionObj.delete(instance);
 			tx.commit();
 			sessionObj.close();
