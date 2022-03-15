@@ -12,7 +12,7 @@ import org.hibernate.Transaction;
 
 
 import com.sinensia.model.Categories;
-import com.sinensia.model.Products;
+
 
 
 
@@ -30,12 +30,6 @@ public class CategoriesDao {
 			Session sessionObj = sessionFactory.getCurrentSession();
 			tx = sessionObj.beginTransaction();
 			sessionObj.persist(transientInstance);
-			if(transientInstance.getProducts() != null) {
-				for(Products product: transientInstance.getProducts()) {
-					product.setCategories(transientInstance);
-					sessionObj.persist(product);
-				}
-			}
 			tx.commit();
 			sessionObj.close();
 			logger.log(Level.INFO, "persist successful");
@@ -54,12 +48,6 @@ public class CategoriesDao {
 			Session sessionObj = sessionFactory.getCurrentSession();
 			tx = sessionObj.beginTransaction();
 			sessionObj.saveOrUpdate(instance);
-			if(instance.getProducts() != null) {
-				for(Products product: instance.getProducts()) {
-					product.setCategories(instance);
-					sessionObj.persist(product);
-				}
-			}
 			tx.commit();
 			sessionObj.close();
 			logger.log(Level.INFO, "attach successful");
@@ -79,12 +67,6 @@ public class CategoriesDao {
 			Session sessionObj = sessionFactory.getCurrentSession();
 			tx = sessionObj.beginTransaction();
 			categoryId = (Integer) sessionObj.save(instance);
-			if(instance.getProducts() != null) {
-				for(Products product: instance.getProducts()) {
-					product.setCategories(instance);
-					sessionObj.persist(product);
-				}
-			}
 			tx.commit();
 			sessionObj.close();
 			logger.log(Level.INFO, "attach successful");
@@ -123,9 +105,6 @@ public class CategoriesDao {
 			Session sessionObj = sessionFactory.getCurrentSession();
 			tx = sessionObj.beginTransaction();
 			Categories instance = (Categories) sessionObj.get("com.sinensia.model.Categories", id);
-			for(Products product: instance.getProducts()) {
-				sessionObj.delete(product);
-			}
 			sessionObj.delete(instance);
 			tx.commit();
 			sessionObj.close();

@@ -28,6 +28,7 @@ public class CategoriesDaoTest {
 		List<Products> listaProductosMerge = new ArrayList<Products>();
 		Products product = new Products();
 		product.setProductName("Productmerge");
+		product.setCategories(category1);
 		listaProductosMerge.add(product);		
 		category1.setProducts(listaProductosMerge);
 		
@@ -37,6 +38,7 @@ public class CategoriesDaoTest {
 		List<Products> listaProductosdelete = new ArrayList<Products>();
 		Products product2 = new Products();
 		product2.setProductName("ProductDeleted");
+		product2.setCategories(category2);
 		listaProductosdelete.add(product2);		
 		category2.setProducts(listaProductosdelete);
 		
@@ -70,10 +72,11 @@ public class CategoriesDaoTest {
 		
 		Products product = new Products();
 		product.setProductName("ProductPersisted1");
-		
+		product.setCategories(category);
 
 		Products product2 = new Products();
 		product2.setProductName("ProductPersisted2");
+		product2.setCategories(category);
 		
 		listaProductos.add(product);
 		listaProductos.add(product2);
@@ -89,10 +92,12 @@ public class CategoriesDaoTest {
 		
 		Products product = new Products();
 		product.setProductName("ProductSaveOrUpdate1");
-
+		product.setCategories(category);
+		
 		Products product2 = new Products();
 		product2.setProductName("ProductSaveOrUpdate2");
-
+		product2.setCategories(category);
+		
 		listaProductos.add(product);
 		listaProductos.add(product2);
 		category.setProducts(listaProductos);
@@ -107,10 +112,12 @@ public class CategoriesDaoTest {
 		
 		Products product = new Products();
 		product.setProductName("ProductSave1");
+		product.setCategories(category);
 		
 		Products product2 = new Products();
 		product2.setProductName("ProductSave2");
-
+		product2.setCategories(category);
+		
 		listaProductos.add(product);
 		listaProductos.add(product2);
 		category.setProducts(listaProductos);
